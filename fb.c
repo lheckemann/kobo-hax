@@ -175,7 +175,9 @@ int init_fb(struct fb * fb) {
 }
 
 int main() {
-    init_fb(&framebuffer);
+    if (!init_fb(&framebuffer)) {
+        exit(-1);
+    }
     while (1) {
         draw_battery(&framebuffer);
         printf("Battery %u%%\n", battery_level);
